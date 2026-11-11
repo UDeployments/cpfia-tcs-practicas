@@ -8,7 +8,7 @@ El repositorio reúne los ejercicios de análisis de datos, Python e inteligenci
 
 | Módulo | Sesión | Práctica | Descripción |
 |--------|--------|----------|-------------|
-| — | — | — | *Próximamente* |
+| 02 | 18 | [Calidad del aire en México con Excel](Modulo02/S18_Calidad_Aire_Excel/) | Base de calidad del aire de la OMS: limpieza, tabla dinámica y dashboard en Excel y PDF |
 
 ## Estructura de cada práctica
 
