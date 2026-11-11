@@ -15,12 +15,12 @@ Aplicar el proceso de la sesión, *de datos crudos a decisiones de negocio*, a u
 | Archivo | Contenido |
 |---|---|
 | [`notebooks/01_calidad_aire_excel.ipynb`](notebooks/01_calidad_aire_excel.ipynb) | Procesamiento completo: descarga, limpieza, análisis y generación del Excel y el PDF |
-| [`outputs/S18_Calidad_Aire_Mexico.xlsx`](outputs/S18_Calidad_Aire_Mexico.xlsx) | Libro de Excel con los 8 estadios del proceso y un dashboard con filtros |
+| [`outputs/S18_Calidad_Aire_Mexico.xlsx`](outputs/S18_Calidad_Aire_Mexico.xlsx) | Libro de Excel con las 8 etapas del proceso y un dashboard con filtros |
 | [`outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf`](outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf) | Dashboard en PDF que redacta todo el proceso y la decisión |
 
 ### Hojas del libro de Excel
 
-| Hoja | Estadio de la clase |
+| Hoja | Etapa de la clase |
 |---|---|
 | `00_Proceso` | Mapa del proceso y Excel Mindset |
 | `01_Datos_Crudos` | 1. Datos crudos, tal como llegan |
