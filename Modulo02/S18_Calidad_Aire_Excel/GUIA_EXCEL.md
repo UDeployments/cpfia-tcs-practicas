@@ -11,12 +11,11 @@ Los menús están escritos para Excel en español en Mac. Si tu Excel separa los
 - **Capturas en Mac:** `Cmd + Shift + 4`, luego `Espacio` y clic sobre la ventana de Excel. La captura se guarda en el Escritorio. Renómbrala con el nombre exacto que indica cada paso y muévela a `outputs/capturas/`. También sirve `.jpg`.
 - En cada captura deja visible lo importante: la cinta de opciones con la pestaña que usaste, la barra de fórmulas cuando haya fórmula y el panel lateral cuando aplique.
 
-Resumen de capturas:
+Resumen de capturas (no hay `02_...`: esa parte la cubre el notebook 01 completo dentro del PDF):
 
 | # | Archivo | Qué muestra |
 |---|---|---|
 | 1 | `01_datos_crudos.png` | Archivo original de la OMS abierto en Excel |
-| 2 | `02_limpieza_notebook.png` | Bitácora de limpieza en el notebook 01 |
 | 3 | `03_datos_limpios.png` | Archivo limpio abierto en Excel |
 | 4 | `04_tabla_excel.png` | Tabla creada y con nombre |
 | 5 | `05_columnas_calculadas.png` | Columnas calculadas con su fórmula |
@@ -44,13 +43,11 @@ Cierra el archivo sin guardar.
 
 La limpieza se hace en el notebook 01 porque el archivo trae 55,221 filas con texto partido en varias celdas.
 
-1. En el notebook 01, en la sección 5, busca la tabla de la bitácora de limpieza.
+El notebook 01 completo va dentro del PDF, justo después de la etapa 1, así que aquí no necesitas captura del notebook.
 
-📸 **Captura:** `02_limpieza_notebook.png`
-
-2. Abre en Excel `data/processed/calidad_aire_mexico_limpio.xlsx`.
-3. Usa **Archivo → Guardar como** y guárdalo como `outputs/S18_Calidad_Aire_Mexico.xlsx` en formato Libro de Excel. A partir de aquí trabaja siempre en este archivo.
-4. Revisa que haya 857 filas de datos y 11 columnas: `Anio`, `Estado`, `Municipio`, `Region`, `PM25`, `PM10`, `NO2`, `Estaciones`, `Poblacion`, `Latitud` y `Longitud`.
+1. Abre en Excel `data/processed/calidad_aire_mexico_limpio.xlsx`.
+2. Usa **Archivo → Guardar como** y guárdalo como `outputs/S18_Calidad_Aire_Mexico.xlsx` en formato Libro de Excel. A partir de aquí trabaja siempre en este archivo.
+3. Revisa que haya 857 filas de datos y 11 columnas: `Anio`, `Estado`, `Municipio`, `Region`, `PM25`, `PM10`, `NO2`, `Estaciones`, `Poblacion`, `Latitud` y `Longitud`.
 
 📸 **Captura:** `03_datos_limpios.png`
 
@@ -195,5 +192,5 @@ Usa letra grande para los valores, por ejemplo tamaño 24 en negrita, y un relle
 
 1. Abre `notebooks/02_reporte_pdf.ipynb`.
 2. Escribe tus textos en la sección 3, con tus palabras. Usa los números de la sección 7 del notebook 01 para el insight y la decisión.
-3. Antes, asegúrate de haber guardado el notebook 01 ya ejecutado: el PDF incluye al final, como anexo, el notebook 01 completo con su código y resultados.
-4. Ejecuta todo el notebook 02. Necesita Google Chrome instalado para convertir el anexo. El PDF queda en `outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf`. Si falta algo, el PDF lo marca en rojo y la tabla de la sección 4 te dice qué completar.
+3. Antes, asegúrate de haber guardado el notebook 01 ya ejecutado: el PDF incluye el notebook 01 completo, con su código y resultados, justo después de la etapa 1.
+4. Ejecuta todo el notebook 02. Necesita Google Chrome instalado para convertir el notebook 01 a PDF. El PDF queda en `outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf`. Si falta algo, el PDF lo marca en rojo y la tabla de la sección 4 te dice qué completar.
