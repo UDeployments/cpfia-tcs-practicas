@@ -69,7 +69,7 @@ En la fila de SI, `D3` es la celda con el resultado de PROMEDIO. Los resultados 
 
 1. Seleccionar una celda de la Tabla `tblCalidadAire`.
 2. **Insertar → Tabla dinámica**, con origen `tblCalidadAire` y destino **Nueva hoja de cálculo**.
-3. Renombrar la hoja como `TD_Principal`.
+3. Renombrar la hoja como `TD_Principal` y, en **Analizar tabla dinámica → Nombre de tabla dinámica**, nombrar la tabla `TD_Principal`.
 4. En **Campos de tabla dinámica**, colocar:
    - `Estado` en **Filas**
    - `Anio` en **Columnas**
@@ -83,17 +83,19 @@ Los valores deben coincidir con la tabla de control del notebook 01, guardada ta
 
 ## Etapa 6 · Gráficos
 
-Siguiendo la regla de oro de la clase, cada gráfico parte de una tabla dinámica.
+Siguiendo la regla de oro de la clase, cada gráfico parte de una tabla dinámica. Las dos tablas y sus gráficos se colocan en una misma hoja nueva llamada `TD_Graficos`, una al lado de la otra.
 
 **Comparación entre entidades**
 
-1. Insertar otra tabla dinámica desde `tblCalidadAire` en una hoja nueva llamada `TD_Estados`, con `Estado` en Filas y **Promedio de PM25** en Valores, ordenada de mayor a menor.
-2. **Insertar → Gráfico dinámico → Barra agrupada**.
-3. Título: `PM2.5 promedio por entidad (µg/m³)`, sin leyenda.
+1. Insertar una tabla dinámica desde `tblCalidadAire` en la hoja `TD_Graficos`, celda `A3`, con `Estado` en Filas y **Promedio de PM25** en Valores, ordenada de mayor a menor. Nombrarla `TD_Estados` en **Analizar tabla dinámica → Nombre de tabla dinámica**.
+2. Quitar Tabasco y Oaxaca, que no tienen PM2.5, desde el filtro de **Etiquetas de fila**.
+3. **Insertar → Gráfico dinámico → Barra agrupada**.
+4. Título: `PM2.5 promedio por entidad (µg/m³)`, sin leyenda.
+5. En el eje vertical, **Dar formato al eje → Categorías en orden inverso**, para que la entidad con mayor PM2.5 quede arriba.
 
 **Tendencia**
 
-1. Insertar otra tabla dinámica en una hoja nueva llamada `TD_Tendencia`, con `Anio` en Filas y **Promedio de PM25** en Valores.
+1. Insertar otra tabla dinámica desde `tblCalidadAire` en la misma hoja, a la derecha del primer gráfico, con `Anio` en Filas y **Promedio de PM25** en Valores. Nombrarla `TD_Tendencia`.
 2. Insertar un **Gráfico dinámico de Líneas con marcadores**.
 3. Título: `Tendencia nacional de PM2.5 (µg/m³)`, sin leyenda.
 
@@ -123,7 +125,7 @@ Sobre los gráficos van cuatro bloques con etiqueta y fórmula, calculados para 
 
 ### Segmentadores
 
-1. Seleccionar una celda de la tabla dinámica de `TD_Estados`.
+1. Seleccionar una celda de la tabla dinámica `TD_Estados`.
 2. **Analizar tabla dinámica → Insertar segmentación de datos**, con `Region` y `Anio`.
 3. Cortar los dos segmentadores y pegarlos en `Dashboard`, junto a los KPIs.
 4. En el segmentador `Region`, clic derecho → **Conexiones de informe**, y marcar `TD_Principal`, `TD_Estados` y `TD_Tendencia`.
