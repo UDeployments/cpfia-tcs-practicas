@@ -1,58 +1,79 @@
 # S18 · Calidad del aire en México con Excel
 
-**Módulo:** 02 · **Sesión:** 18 · Excel para análisis de datos I · **Fecha:** 2026-11-11
+**Módulo:** 02 · **Sesión:** 18 · Excel para análisis de datos I · **Fecha:** 2026-11-12
 
 ## Objetivo
 
-Aplicar el proceso de la sesión, *de datos crudos a decisiones de negocio*, a un problema real de contaminación: la calidad del aire en las ciudades de México. Los datos vienen de la base pública mundial de la OMS.
+En esta práctica apliqué el proceso que vimos en la Sesión 18, *de datos crudos a decisiones de negocio*, a un tema de contaminación en México. Elegí el área de **aire** y trabajé con una base de datos pública de la OMS para responder esta pregunta:
 
 | Pregunta | Métrica | Dimensión | Filtro | Análisis accionable |
 |---|---|---|---|---|
-| ¿Qué entidades de México respiran el aire más contaminado y cómo ha cambiado? | Promedio anual de PM2.5 en µg/m³ (`PROMEDIO`) | Entidad (filas) y año (columnas) | Región y año | Priorizar dónde invertir primero en control de emisiones y monitoreo |
-
-## Flujo de trabajo
-
-| Paso | Dónde | Etapas de la clase | Resultado |
-|---|---|---|---|
-| 1 | [`notebooks/01_preparacion_datos.ipynb`](notebooks/01_preparacion_datos.ipynb) | 1. Datos crudos · 2. Datos limpios | `data/processed/calidad_aire_mexico_limpio.xlsx` y valores de control |
-| 2 | Excel, procedimiento en [`GUIA_EXCEL.md`](GUIA_EXCEL.md) | 3. Tabla · 4. Fórmulas · 5. Tabla dinámica · 6. Gráficos · 7. Dashboard · 8. Decisión | `outputs/S18_Calidad_Aire_Mexico.xlsx` y capturas en `outputs/capturas/` |
-| 3 | [`notebooks/02_reporte_pdf.ipynb`](notebooks/02_reporte_pdf.ipynb) | Reporte | `outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf`, en orden del proceso e incluyendo el notebook 01 completo |
-
-Python se usó para preparar los datos y armar el PDF. El análisis en Excel se hizo a mano con herramientas nativas: Tabla, fórmulas, tabla dinámica, gráficos dinámicos y segmentadores. El PDF muestra cada paso con su captura de pantalla.
+| ¿Qué entidades de México respiran el aire más contaminado y cómo ha cambiado? | Promedio anual de PM2.5 en µg/m³ | Entidad (filas) y año (columnas) | Región y año | Priorizar dónde invertir primero en control de emisiones y monitoreo |
 
 ## Datos
 
-- **Fuente:** [WHO Ambient Air Quality Database, versión 8.0 (junio 2026)](https://www.who.int/publications/m/item/who-ambient-air-quality-database-(update-jun-2026)). Para México, las mediciones provienen del SINAICA del INECC.
-- **Cobertura:** 868 registros de México de 2010 a 2023, con promedios anuales de PM2.5, PM10 y NO2. Después de la limpieza quedan 857 registros de 112 municipios en 24 entidades.
-- **Referencia:** guías de calidad del aire de la OMS 2021, promedio anual: PM2.5 = 5, PM10 = 15 y NO2 = 10 µg/m³.
+Usé la [WHO Ambient Air Quality Database, versión 8.0](https://www.who.int/publications/m/item/who-ambient-air-quality-database-(update-jun-2026)), publicada por la OMS en junio de 2026. Tiene los promedios anuales de PM2.5, PM10 y NO2 de ciudades de todo el mundo; los datos de México vienen del SINAICA del INECC. Para México hay 868 registros de 2010 a 2023.
 
-El archivo original (1.9 MB) no se sube al repositorio. El notebook 01 lo descarga en `data/raw/` la primera vez que se ejecuta.
+Como guía usé los valores anuales recomendados por la OMS en 2021: 5 µg/m³ para PM2.5, 15 para PM10 y 10 para NO2.
 
-## Cómo ejecutar
+## Cómo lo hice
 
-Desde la raíz del repositorio, con el entorno activado:
+**1. Datos crudos.** Cuando abrí el archivo de la OMS en Excel me di cuenta de que no se podía usar así: cada fila venía como un texto separado por comas dentro de la columna A, y las filas largas se partían en varias celdas.
 
-```bash
-jupyter lab
-```
+**2. Limpieza en Python.** Por el tamaño del archivo, más de 55 mil filas, hice la limpieza en un notebook (`notebooks/01_preparacion_datos.ipynb`). Reconstruí las columnas, filtré México, separé el municipio y el estado, unifiqué nombres repetidos y descarté las mediciones que cubrían menos del 75% del año. Antes de decidir ese 75% revisé cuántas mediciones quedaban fuera con distintos umbrales. Al final exporté un Excel limpio con 857 registros y calculé con pandas unos valores de control para comprobar después mis resultados en Excel.
 
-1. Ejecutar `notebooks/01_preparacion_datos.ipynb` con el kernel **Python (CPFIA)**. Necesita internet la primera vez para descargar la base de la OMS.
-2. Replicar el análisis en Excel con el procedimiento de `GUIA_EXCEL.md`, guardando las capturas de cada paso en `outputs/capturas/` con los nombres que lista la sección 3 de `notebooks/02_reporte_pdf.ipynb`.
-3. Ejecutar `notebooks/02_reporte_pdf.ipynb`. Requiere Google Chrome para convertir el notebook 01 a PDF y la librería `pypdf` de `requirements.txt` para unir el PDF.
+**3 a 8. Análisis en Excel.** Todo lo demás lo hice a mano en Excel, en `outputs/S18_Calidad_Aire_Mexico.xlsx`:
 
-## Qué aprendí
+- Convertí los datos en una Tabla llamada `tblCalidadAire`.
+- Agregué dos columnas calculadas con `SI`: cuántas veces supera cada medición la guía de la OMS y una categoría según su nivel.
+- Hice una hoja con las fórmulas base (`SUMA`, `PROMEDIO`, `CONTAR`, `CONTARA`, `CONTAR.SI` y `SI`), cada una respondiendo una pregunta.
+- Armé una tabla dinámica con el promedio de PM2.5 por entidad y año, ordenada y con escala de color.
+- Hice dos gráficos dinámicos: barras para comparar entidades y una línea para ver la tendencia.
+- Junté todo en un dashboard con indicadores y segmentadores de región y año conectados a las tablas dinámicas.
+- Escribí el insight y la decisión en una hoja aparte.
 
-- Un dato público oficial puede llegar sin estructura. La base de la OMS trae cada fila como texto CSV dentro de la columna A, partida en varias celdas cuando es larga.
-- Las reglas de higiene se aplican antes de cualquier tabla dinámica: separar municipio y estado, unificar nombres repetidos y descartar mediciones con menos de 75% de cobertura del año.
-- Formular primero pregunta, métrica y dimensión hace directo el mapeo a Filas, Columnas, Valores y Filtros.
+Comparé las fórmulas base y la tabla dinámica con los valores de control del notebook y coincidieron. El procedimiento completo, con menús y fórmulas, está en [`GUIA_EXCEL.md`](GUIA_EXCEL.md).
+
+**Reporte.** El PDF lo generé con `notebooks/02_reporte_pdf.ipynb`. Junta en orden las capturas que fui tomando, con el notebook de limpieza completo después de los datos crudos.
 
 ## Resultados
 
-Entre 2018 y 2023, el PM2.5 promedio de las ciudades monitoreadas de México fue de **19.6 µg/m³, 3.9 veces la guía de la OMS**, y el 99.2% de las mediciones municipales la superó. Las entidades con mayor PM2.5 fueron Jalisco, Baja California y Estado de México. Solo 22 de las 24 entidades con estaciones reportan PM2.5.
+- Entre 2018 y 2023 el PM2.5 promedio fue de **19.6 µg/m³, casi 4 veces la guía de la OMS**, y el 99.2% de las mediciones estuvo por arriba.
+- Las entidades con el aire más contaminado son el **Estado de México, Jalisco y Baja California**. Los municipios más altos están en el Valle de Toluca (San Mateo Atenco, Metepec y Toluca) y en Guadalajara.
+- El promedio nacional bajó de 31.9 en 2013 a cerca de 20 en 2018, pero desde entonces casi no ha cambiado.
+- Tabasco y Oaxaca tienen estaciones, pero no miden PM2.5.
 
-![Contexto mundial](outputs/pm25_contexto_mundial.png)
+**Decisión:** enfocar primero el presupuesto de control de emisiones en el Estado de México, Jalisco y Baja California, y poner monitores de PM2.5 donde hoy no se mide.
 
-**Limitaciones:** los promedios solo incluyen municipios con estaciones. La comparación mundial depende de cuántas ciudades mide cada región.
+**Limitaciones:** solo se incluyen municipios con estaciones, 2023 tiene pocas mediciones y se descartaron las de baja cobertura.
+
+## Qué aprendí
+
+- Que los datos públicos no siempre vienen listos para usarse; la mayor parte del trabajo estuvo en entender y limpiar el archivo.
+- A plantear primero la pregunta, la métrica y la dimensión, y después pasarlas a Filas, Columnas y Valores de la tabla dinámica.
+- A conectar segmentadores a varias tablas dinámicas para que un solo filtro cambie todo el dashboard.
+- Que conviene tener valores de control para comprobar que lo que hago en Excel está bien.
+
+## Archivos
+
+| Archivo | Contenido |
+|---|---|
+| `notebooks/01_preparacion_datos.ipynb` | Descarga, exploración y limpieza de los datos |
+| `notebooks/02_reporte_pdf.ipynb` | Generación del reporte PDF |
+| `GUIA_EXCEL.md` | Procedimiento en Excel para replicar el análisis |
+| `data/processed/calidad_aire_mexico_limpio.xlsx` | Datos limpios, base del trabajo en Excel |
+| `data/processed/referencia_tabla_dinamica.csv` | Tabla dinámica de control |
+| `outputs/S18_Calidad_Aire_Mexico.xlsx` | Mi libro de Excel con todo el análisis |
+| `outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf` | Reporte final |
+| `outputs/capturas/` | Capturas de cada paso en Excel |
+
+El archivo original de la OMS (1.9 MB) no está en el repositorio; el notebook 01 lo descarga en `data/raw/`.
+
+## Cómo replicarlo
+
+1. Ejecutar `notebooks/01_preparacion_datos.ipynb` con el kernel **Python (CPFIA)**. La primera vez necesita internet para descargar la base de la OMS.
+2. Seguir `GUIA_EXCEL.md` en Excel y guardar las capturas en `outputs/capturas/` con los nombres que ahí se indican.
+3. Ejecutar `notebooks/02_reporte_pdf.ipynb`. Necesita Google Chrome y la librería `pypdf` de `requirements.txt`.
 
 ## Referencias
 
