@@ -76,6 +76,7 @@ Después renombra el notebook, completa el README de la práctica y agrega una f
 - Matplotlib
 - scikit-learn
 - openpyxl (lectura y escritura de Excel)
+- pypdf (unir archivos PDF)
 
 ## Cómo ejecutar
 

@@ -195,4 +195,5 @@ Usa letra grande para los valores, por ejemplo tamaño 24 en negrita, y un relle
 
 1. Abre `notebooks/02_reporte_pdf.ipynb`.
 2. Escribe tus textos en la sección 3, con tus palabras. Usa los números de la sección 7 del notebook 01 para el insight y la decisión.
-3. Ejecuta todo el notebook. El PDF queda en `outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf`. Si falta algo, el PDF lo marca en rojo y la tabla de la sección 4 te dice qué completar.
+3. Antes, asegúrate de haber guardado el notebook 01 ya ejecutado: el PDF incluye al final, como anexo, el notebook 01 completo con su código y resultados.
+4. Ejecuta todo el notebook 02. Necesita Google Chrome instalado para convertir el anexo. El PDF queda en `outputs/S18_Dashboard_Calidad_Aire_Mexico.pdf`. Si falta algo, el PDF lo marca en rojo y la tabla de la sección 4 te dice qué completar.
