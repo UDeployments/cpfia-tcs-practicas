@@ -76,7 +76,7 @@ En la fila de SI, `D3` es la celda con el resultado de PROMEDIO. Los resultados 
    - `PM25` en **Valores**
    - `Region` en **Filtros**
 5. En **Suma de PM25 → Configuración de campo de valor**, cambiar a **Promedio** y, en **Formato de número**, 1 decimal.
-6. Ordenar de mayor a menor con clic derecho en la columna **Total general → Ordenar → De mayor a menor**.
+6. Ordenar los estados de mayor a menor: la tabla tiene una fila *Total general* abajo y una columna *Total general* a la derecha de 2023. Clic derecho sobre cualquier número de la **columna** Total general → **Ordenar → Ordenar de mayor a menor**. Si esa columna no aparece, activarla en **Diseño de tabla dinámica → Totales generales → Activado para filas y columnas**.
 7. Seleccionar los valores sin los totales y aplicar **Inicio → Formato condicional → Escalas de color**.
 
 Los valores deben coincidir con la tabla de control del notebook 01, guardada también en `data/processed/referencia_tabla_dinamica.csv`.
