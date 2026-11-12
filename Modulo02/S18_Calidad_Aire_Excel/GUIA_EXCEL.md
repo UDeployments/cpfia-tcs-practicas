@@ -125,9 +125,9 @@ Sobre los gráficos van cuatro bloques con etiqueta y fórmula, calculados para 
 
 ### Segmentadores
 
-1. Seleccionar una celda de la tabla dinámica `TD_Estados`.
-2. **Analizar tabla dinámica → Insertar segmentación de datos**, con `Region` y `Anio`.
-3. Cortar los dos segmentadores y pegarlos en `Dashboard`, junto a los KPIs.
+1. En la hoja `Dashboard`, seleccionar el gráfico de barras.
+2. **Analizar gráfico dinámico → Insertar segmentación de datos**, con `Region` y `Anio`. Los segmentadores se crean en la misma hoja.
+3. Colocarlos junto a los KPIs.
 4. En el segmentador `Region`, clic derecho → **Conexiones de informe**, y marcar `TD_Principal`, `TD_Estados` y `TD_Tendencia`.
 5. En el segmentador `Anio`, en **Conexiones de informe**, marcar `TD_Principal` y `TD_Estados`. La tendencia no se filtra por año.
 
