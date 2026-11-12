@@ -48,7 +48,7 @@ jupyter lab
 
 ## Resultados
 
-Entre 2018 y 2022, el PM2.5 promedio de las ciudades monitoreadas de México fue de **19.6 µg/m³, 3.9 veces la guía de la OMS**, y el 99.2% de las mediciones municipales la superó. Las entidades con mayor PM2.5 fueron Jalisco, Estado de México y Baja California. Solo 22 de las 24 entidades con estaciones reportan PM2.5.
+Entre 2018 y 2023, el PM2.5 promedio de las ciudades monitoreadas de México fue de **19.6 µg/m³, 3.9 veces la guía de la OMS**, y el 99.2% de las mediciones municipales la superó. Las entidades con mayor PM2.5 fueron Jalisco, Baja California y Estado de México. Solo 22 de las 24 entidades con estaciones reportan PM2.5.
 
 ![Contexto mundial](outputs/pm25_contexto_mundial.png)
 

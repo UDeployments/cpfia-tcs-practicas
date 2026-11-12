@@ -157,13 +157,13 @@ Para menos ruido visual, en cada gráfico usa **Analizar gráfico dinámico → 
 
 ### Indicadores (KPIs)
 
-Arriba de los gráficos, crea cuatro bloques con una etiqueta y una fórmula. Todos usan el periodo 2018-2022:
+Arriba de los gráficos, crea cuatro bloques con una etiqueta y una fórmula. Todos usan el periodo 2018-2023, el mismo que `PERIODO_RECIENTE` en el notebook 01. Si lo cambias allá, cambia aquí los años de las fórmulas:
 
 | Etiqueta | Fórmula | Formato |
 |---|---|---|
-| PM2.5 promedio 2018-2022 | `=PROMEDIO.SI.CONJUNTO(tblCalidadAire[PM25],tblCalidadAire[Anio],">=2018",tblCalidadAire[Anio],"<=2022")` | 1 decimal |
+| PM2.5 promedio 2018-2023 | `=PROMEDIO.SI.CONJUNTO(tblCalidadAire[PM25],tblCalidadAire[Anio],">=2018",tblCalidadAire[Anio],"<=2023")` | 1 decimal |
 | Veces sobre la guía OMS | `=celda_del_promedio/5` | 1 decimal |
-| Mediciones sobre la guía | `=CONTAR.SI.CONJUNTO(tblCalidadAire[PM25],">5",tblCalidadAire[Anio],">=2018",tblCalidadAire[Anio],"<=2022")/CONTAR.SI.CONJUNTO(tblCalidadAire[PM25],">=0",tblCalidadAire[Anio],">=2018",tblCalidadAire[Anio],"<=2022")` | Porcentaje, 1 decimal |
+| Mediciones sobre la guía | `=CONTAR.SI.CONJUNTO(tblCalidadAire[PM25],">5",tblCalidadAire[Anio],">=2018",tblCalidadAire[Anio],"<=2023")/CONTAR.SI.CONJUNTO(tblCalidadAire[PM25],">=0",tblCalidadAire[Anio],">=2018",tblCalidadAire[Anio],"<=2023")` | Porcentaje, 1 decimal |
 | Municipios monitoreados | `=CONTARA(UNICOS(tblCalidadAire[Municipio]&" - "&tblCalidadAire[Estado]))` | Sin decimales |
 
 `UNICOS` existe en Excel 365 y Excel 2021. Si tu versión no la tiene, escribe el valor de la sección 7 del notebook 01.
